@@ -5,7 +5,6 @@
 #include <QWidget>
 #include "glvisualization.h"
 
-
 class GLWidget : public QGLWidget
 {
     Q_OBJECT
@@ -42,6 +41,8 @@ private:
     int zRot;
     QPoint lastPos;
 
+    QColor qtGreen;
+    QColor qtPurple;
 };
 
 #endif

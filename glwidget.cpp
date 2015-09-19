@@ -25,13 +25,10 @@ QSize GLWidget::minimumSizeHint() const
 {
     return QSize(50, 50);
 }
-
 QSize GLWidget::sizeHint() const
-\
 {
     return QSize(400, 400);
 }
-
 
 static void qNormalizeAngle(int &angle)
 {
@@ -40,7 +37,6 @@ static void qNormalizeAngle(int &angle)
     while (angle > 360 * 16)
         angle -= 360 * 16;
 }
-
 void GLWidget::setXRotation(int angle)
 {
     qNormalizeAngle(angle);
@@ -50,7 +46,6 @@ void GLWidget::setXRotation(int angle)
         updateGL();
     }
 }
-
 
 void GLWidget::setYRotation(int angle)
 {
@@ -103,9 +98,7 @@ void GLWidget::paintGL()
     glVertex3f(0.3,0.2,0.3);
     glVertex3f(0.1,0.3,0.4);
     glEnd();
-
     gl_data_->drawFrame();
-
 }
 
 
