@@ -13,6 +13,7 @@ GLWidget::GLWidget(QWidget *parent)
     xRot = 0;
     yRot = 0;
     zRot = 0;
+    range_=100;
     gl_data_ = new GlVisualization();
 }
 
@@ -99,21 +100,30 @@ void GLWidget::paintGL()
     glVertex3f(0.1,0.3,0.4);
     glEnd();
     gl_data_->drawFrame();
+    gl_data_->drawGrid(10);
 }
 
 
 void GLWidget::resizeGL(int width, int height)
 {
     int side = qMin(width, height);
-    glViewport((width - side) / 2, (height - side) / 2, side, side);
+    //glViewport((width - side) / 2, (height - side) / 2, side, side);
 
+    glViewport(0,0,width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 #ifdef QT_OPENGL_ES_1
-    glOrthof(-0.5, +0.5, -0.5, +0.5, 4.0, 15.0);
+   // glOrthof(-0.5, +0.5, -0.5, +0.5, 4.0, 15.0);
+    //glOrthof(-range_, range_, -float(width)/float(height)*range_, -float(width)/float(height)*range_, -range_, range_);
 #else
-    glOrtho(-0.5, +0.5, -0.5, +0.5, 4.0, 15.0);
+   // glOrtho(-0.5, +0.5, -0.5, +0.5, 4.0, 15.0);
+   // glOrtho(-range_, range_, -float(width)/float(height)*range_, -float(width)/float(height)*range_, -range_, range_);
+
 #endif
+    //gluPerspective(40, GLfloat(width)/GLfloat(height), 0.5, 10);
+    //gluPerspective( 45.0, (GLfloat)width/(GLfloat)height, 0.1, 100.0 );
+glFrustum(-range_, range_, -1.0, 1.0, 4.0, 15.0);
+
     glMatrixMode(GL_MODELVIEW);
 }
 

@@ -56,6 +56,22 @@ public:
         glEnd();
     }
 
+
+    void drawGrid(int range)
+    {
+        glColor3f(1,1,1);
+        glBegin(GL_LINES);
+        for(int i=-range; i<range; i++)
+        {
+            glVertex3f(-range, i,0);
+            glVertex3f(range, i,0);
+
+            glVertex3f(i, -range,0);
+            glVertex3f(i, range,0);
+
+        }
+        glEnd();
+    }
 protected:
 
 private:

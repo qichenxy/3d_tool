@@ -36,6 +36,8 @@ protected:
 
 private:
 
+    float range_;
+
     int xRot;
     int yRot;
     int zRot;
